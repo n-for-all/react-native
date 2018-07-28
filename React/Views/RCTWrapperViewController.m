@@ -115,9 +115,17 @@ static UIView *RCTFindNavBarShadowViewInView(UIView *view)
 #if !TARGET_OS_TV
     bar.barStyle = _navItem.barStyle;
 #endif
-    bar.titleTextAttributes = _navItem.titleTextColor ? @{
-      NSForegroundColorAttributeName: _navItem.titleTextColor
-    } : nil;
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    if(_navItem.titleTextColor){
+        [attributes setValue:_navItem.titleTextColor forKey:NSForegroundColorAttributeName];
+    }
+    if(_navItem.titleTextFont){
+      [attributes setValue:[UIFont fontWithName:_navItem.titleTextFont size:_navItem.titleTextFontSize ? _navItem.titleTextFontSize: 12] forKey:NSFontAttributeName];
+    }
+    if(_navItem.titleTextSpacing){
+      [attributes setValue:[NSNumber numberWithFloat:_navItem.titleTextSpacing] forKey:NSKernAttributeName];
+    }
 
     RCTFindNavBarShadowViewInView(bar).hidden = _navItem.shadowHidden;
 
