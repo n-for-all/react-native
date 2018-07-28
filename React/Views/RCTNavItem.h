@@ -26,6 +26,9 @@
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) UIColor *barTintColor;
 @property (nonatomic, strong) UIColor *titleTextColor;
+@property (nonatomic, strong) NSString *titleTextFont;
+@property (nonatomic, assign) CGFloat titleTextFontSize;
+@property (nonatomic, assign) CGFloat titleTextSpacing;
 @property (nonatomic, assign) BOOL translucent;
 #if !TARGET_OS_TV
 @property (nonatomic, assign) UIBarStyle barStyle;
